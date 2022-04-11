@@ -29,6 +29,14 @@ const MockRepository = () => {
 
 describe("Unit test update customer use case", () => {
 
+   beforeEach(() => {
+      input.name = "John Updated";
+      input.address.street = "Street Updated";
+      input.address.number = 1234;
+      input.address.zip = "Zip Updated";
+      input.address.city = "City Updated";
+   });
+
    it("Should update a customer", async() => {
       const customerRepository = MockRepository();
       const usecase = new UpdateCustomerUsecase(customerRepository);
@@ -56,8 +64,6 @@ describe("Unit test update customer use case", () => {
       input.name = "";
 
       await expect(usecase.execute(input)).rejects.toThrow("Name is required");
-
-      input.name = "John Updated"
    });
 
    it("Should throw an error when street is missing", async() => {
@@ -67,8 +73,6 @@ describe("Unit test update customer use case", () => {
       input.address.street = "";
 
       await expect(usecase.execute(input)).rejects.toThrow("Street is required");
-
-      input.address.street = "Street Updated";
    });
 
 });
