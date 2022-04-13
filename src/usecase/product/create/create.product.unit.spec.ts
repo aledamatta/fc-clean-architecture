@@ -15,10 +15,9 @@ const MockRepository = () => {
    };
 }
 
-describe ("Unit test create product use case", () => {
+describe ("unit test create product use case", () => {
 
    beforeEach(() => {
-         input.type = 'a';
          input.name = "Product a";
          input.price = 123;
    });
