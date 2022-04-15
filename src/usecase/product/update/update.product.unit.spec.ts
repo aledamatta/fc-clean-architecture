@@ -45,22 +45,21 @@ describe("Unit test update product use case", () => {
       expect(usecase.execute(input)).rejects.toThrow("Product not found");
    });
 
-   it("Should throw an error when name is required", async() => {
-      const productRepository = MockRepository();
-      const usecase = new UpdateProductUsecase(productRepository);
-
-      input.name = "";
-
-      await expect(usecase.execute(input)).rejects.toThrow("Name is required");
-   });
-
    it("Should throw an error when price is less than zero", async() => {
       const productRepository = MockRepository();
       const usecase = new UpdateProductUsecase(productRepository);
 
       input.price = -1;
-
-      await expect(usecase.execute(input)).rejects.toThrow("Price must be greater than zero");
+      
+      await expect(usecase.execute(input)).rejects.toThrow("product: Price must be greater than zero");
    });
 
+   it("Should throw an error when name is required", async() => {
+      const productRepository = MockRepository();
+      const usecase = new UpdateProductUsecase(productRepository);
+
+      input.name = "";
+      
+      await expect(usecase.execute(input)).rejects.toThrow("product: Name is required");
+   });
 });

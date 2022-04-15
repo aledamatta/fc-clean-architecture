@@ -70,7 +70,7 @@ describe("Integration test update product use case", () => {
          price: 11,
       }
 
-      await expect(usecase.execute(inputUpdate)).rejects.toThrow("Name is required");
+      await expect(usecase.execute(inputUpdate)).rejects.toThrow("product: Name is required");
    });
 
    it("Should throw an error when price is less than zero", async() => {
@@ -87,7 +87,7 @@ describe("Integration test update product use case", () => {
          price: -1,
       }
 
-      await expect(usecase.execute(inputUpdate)).rejects.toThrow("Price must be greater than zero");
+      await expect(usecase.execute(inputUpdate)).rejects.toThrow("product: Price must be greater than zero");
    });
 
 });
